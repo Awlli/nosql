@@ -1,0 +1,9 @@
+.text-field:invalid {
+    -fx-border-color: #C62828;
+    -fx-border-width: 1.5px;
+}
+
+.error-label {
+    -fx-text-fill: #C62828;
+    -fx-font-size: 11px;
+}

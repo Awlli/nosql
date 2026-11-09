@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com" xmlns:fx="http://javafx.com"
+            fx:controller="kz.atu.lab09.RentalController" stylesheets="@validation.css">
+    <center>
+        <VBox spacing="10">
+            <padding>
+                <Insets bottom="15" left="15" right="15" top="15"/>
+            </padding>
+            <GridPane hgap="10" vgap="5">
+                <columnConstraints>
+                    <ColumnConstraints minWidth="120" prefWidth="150"/>
+                    <ColumnConstraints hgrow="ALWAYS" minWidth="200"/>
+                </columnConstraints>
+
+                <!-- ФИО -->
+                <Label text="ФИО арендатора:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <VBox GridPane.rowIndex="0" GridPane.columnIndex="1">
+                    <TextField fx:id="txtName"/>
+                    <Label fx:id="lblNameError" styleClass="error-label"/>
+                </VBox>
+
+                <!-- Email -->
+                <Label text="Email:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <VBox GridPane.rowIndex="1" GridPane.columnIndex="1">
+                    <TextField fx:id="txtEmail"/>
+                    <Label fx:id="lblEmailError" styleClass="error-label"/>
+                </VBox>
+
+                <!-- VIN -->
+                <Label text="VIN автомобиля (7 симв.):" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <VBox GridPane.rowIndex="2" GridPane.columnIndex="1">
+                    <TextField fx:id="txtVin"/>
+                    <Label fx:id="lblVinError" styleClass="error-label"/>
+                </VBox>
+
+                <!-- Срок аренды -->
+                <Label text="Срок аренды (дней):" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <VBox GridPane.rowIndex="3" GridPane.columnIndex="1">
+                    <TextField fx:id="txtDays"/>
+                    <Label fx:id="lblDaysError" styleClass="error-label"/>
+                </VBox>
+
+                <!-- Класс автомобиля -->
+                <Label text="Класс авто:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <VBox GridPane.rowIndex="4" GridPane.columnIndex="1">
+                    <ComboBox fx:id="cmbClass" promptText="Выберите класс">
+                        <items>
+                            <FXCollections fx:factory="observableArrayList">
+                                <String fx:value="Эконом"/>
+                                <String fx:value="Комфорт"/>
+                                <String fx:value="Бизнес"/>
+                            </FXCollections>
+                        </items>
+                    </ComboBox>
+                    <Label fx:id="lblClassError" styleClass="error-label"/>
+                </VBox>
+
+                <!-- Согласие -->
+                <VBox GridPane.rowIndex="5" GridPane.columnIndex="1" spacing="2">
+                    <CheckBox fx:id="chkConsent" text="Согласен с условиями проката"/>
+                    <Label fx:id="lblConsentError" styleClass="error-label"/>
+                </VBox>
+            </GridPane>
+
+            <!-- Кнопки -->
+            <HBox spacing="10">
+                <Button text="Оформить аренду" onAction="#onRegister"/>
+                <Button text="Очистить форму" onAction="#clearForm"/>
+                <Button text="Сохранить в файл" onAction="#onSaveToFile"/>
+            </HBox>
+        </VBox>
+    </center>
+
+    <!-- Таблица результатов -->
+    <bottom>
+        <TableView fx:id="tblRentals" prefHeight="200">
+            <columns>
+                <TableColumn fx:id="colName" text="ФИО" prefWidth="150"/>
+                <TableColumn fx:id="colEmail" text="Email" prefWidth="120"/>
+                <TableColumn fx:id="colVin" text="VIN код" prefWidth="100"/>
+                <TableColumn fx:id="colDays" text="Дни" prefWidth="60"/>
+                <TableColumn fx:id="colClass" text="Класс авто" prefWidth="100"/>
+            </columns>
+        </TableView>
+    </bottom>
+</BorderPane>
