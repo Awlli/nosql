@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.input.KeyCodeCombination?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Priority?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="kz.atu.lab08.MainController"
+            prefHeight="520.0" prefWidth="780.0">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+         <menus>
+            <Menu text="Файл">
+               <items>
+                  <MenuItem onAction="#onOpen" text="Открыть…">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="O" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem onAction="#onSave" text="Сохранить">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                     </accelerator>
+                  </MenuItem>
+                  <MenuItem onAction="#onSaveAs" text="Сохранить как…">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="S" control="DOWN" meta="UP" shift="DOWN" shortcut="UP"/>
+                     </accelerator>
+                  </MenuItem>
+                  <SeparatorMenuItem/>
+                  <MenuItem onAction="#onExit" text="Выход">
+                     <accelerator>
+                        <KeyCodeCombination alt="UP" code="Q" control="DOWN" meta="UP" shift="UP" shortcut="UP"/>
+                     </accelerator>
+                  </MenuItem>
+               </items>
+            </Menu>
+            <Menu text="Настройки">
+               <items>
+                  <MenuItem onAction="#onChooseColor" text="Цвет текста…"/>
+               </items>
+            </Menu>
+            <Menu text="Справка">
+               <items>
+                  <MenuItem onAction="#onHelp" text="Справка (немодальное окно)"/>
+                  <MenuItem onAction="#onAbout" text="О программе"/>
+               </items>
+            </Menu>
+         </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <TextArea fx:id="txtNotes" wrapText="true" promptText="Введите заметку…" BorderPane.alignment="CENTER"/>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER_LEFT" spacing="10.0" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="6.0" left="10.0" right="10.0" top="6.0"/>
+         </padding>
+         <children>
+            <Label fx:id="lblStatus" maxWidth="1.7976931348623157E308" text="Готово">
+               <HBox.hgrow>
+                  <Priority fx:constant="ALWAYS"/>
+               </HBox.hgrow>
+            </Label>
+            <Button onAction="#onAbout" text="О программе"/>
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>
